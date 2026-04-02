@@ -72,7 +72,7 @@ const RESET = '\x1b[0m';
  */
 export function Logger(this: ILogger, options: ILoggerOptions = {}): void {
   const enabled = options.enabled ?? false;
-  const level = options.level ?? 'info';
+  let level = options.level ?? 'info'; // Changed from const to let
   const channels = options.channels ?? [];
   const timestamps = options.timestamps ?? true;
   const colors = options.colors ?? true;
@@ -167,7 +167,7 @@ export function Logger(this: ILogger, options: ILoggerOptions = {}): void {
   };
 
   this.setLevel = (newLevel: LogLevel): void => {
-    (level as any) = newLevel;
+    level = newLevel; // Direct assignment now that level is let
   };
 
   this.setChannels = (newChannels: LogChannel[]): void => {
