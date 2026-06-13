@@ -53,7 +53,7 @@
     }
   },
   "file_structure": {
-    "implementation_root": "C:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\pulsar-transformer\\docs\\implementation-plans\\[feature]\\",
+    "implementation_root": "C:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\synetics-transformer\\docs\\implementation-plans\\[feature]\\",
     "folders": {
       "archive": "old attempts/files",
       "analyse": "research findings",
@@ -121,7 +121,7 @@
     "default_mode": "STATE + IMPLEMENT (state intent, immediately implement, no waiting unless uncertain)",
     "research_approach": {
       "step1": "Use my knowledge + best practices (quality first)",
-      "step2_uncertain": "Search C:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\pulsar-transformer\\docs\\learnings",
+      "step2_uncertain": "Search C:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\synetics-transformer\\docs\\learnings",
       "step3_still_uncertain": "Go online research",
       "step4_still_stuck": "STOP ALL and brainstorm with user"
     },

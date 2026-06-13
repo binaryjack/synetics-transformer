@@ -123,7 +123,7 @@ function addRegistryImport(program: NodePath<BabelTypes.Program>, t: typeof Babe
     t.isImportDeclaration(node)
   );
 
-  const pulsarPath = '@pulsar-framework/pulsar.dev';
+  const pulsarPath = '@synetics/synetics.dev';
   const existingImport = imports.find((imp) => imp.source.value === pulsarPath);
 
   if (existingImport) {

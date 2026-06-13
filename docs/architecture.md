@@ -8,16 +8,16 @@
 
 The Pulsar Transformer converts PSR (Pulsar Syntax) source code into optimized TypeScript through a **5-phase pipeline**:
 
-ALWAYS READ `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\pulsar-transformer\docs\rules.md`
+ALWAYS READ `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\synetics-transformer\docs\rules.md`
 before starting a session
 
 the previous version that I've totally eleted was polluted by several AI Agents who bullshited me along the way this is unacceptable so from now ON you are not authorized to act without my permission!
 or unles I say do it in one go excplicitely
 
-always refesr to this file `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\pulsar-transformer\docs\rules.md`
+always refesr to this file `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\synetics-transformer\docs\rules.md`
 if you have any doubt about how to work with me!
 
-# Main Goal: Transform PSR Files into Web app that uses pulsar framework with all reactivity wired. As React, Svelte, Vue, Angular, Solid do.
+# Main Goal: Transform PSR Files into Web app that uses Synetics framework with all reactivity wired. As React, Svelte, Vue, Angular, Solid do.
 
 # Use exclusively TypeScript transformation transpiling from PSR TO JS
 

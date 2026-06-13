@@ -1,5 +1,5 @@
-import { $REGISTRY, t_element, useEffect } from '@pulsar-framework/pulsar.dev';
-import { cn } from '@pulsar-framework/design-tokens';
+import { $REGISTRY, t_element, useEffect } from '@synetics/synetics.dev';
+import { cn } from '@synetics/design-tokens';
 
 export interface IDrawerProps {
   open: boolean;

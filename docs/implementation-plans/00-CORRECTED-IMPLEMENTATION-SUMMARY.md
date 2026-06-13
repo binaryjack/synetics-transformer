@@ -13,7 +13,7 @@
 
 ❌ **61% of original plans (22/36) were misconceived**
 
-Plans confused **Runtime Features** (already implemented in `@pulsar-framework/pulsar.dev`) with **Transformer Features** (PSR syntax transformation).
+Plans confused **Runtime Features** (already implemented in `@synetics/synetics.dev`) with **Transformer Features** (PSR syntax transformation).
 
 **Actions Taken:**
 
@@ -32,7 +32,7 @@ Plans said: **"Implement createResource() transformation"** or **"Parse `<Portal
 
 ### Reality
 
-These are **runtime features** from `@pulsar-framework/pulsar.dev`:
+These are **runtime features** from `@synetics/synetics.dev`:
 
 - `createResource()` - Runtime function (already exists)
 - `<Portal>`, `<Show>`, `<For>`, `<Tryer>` - Runtime components (already exist)
@@ -103,7 +103,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 - ❌ resource-parallel-fetching (may not exist as folder)
 - ❌ resource-pre-resolution
 
-**Reality:** All resource features exist in `packages/pulsar.dev/src/resource/`
+**Reality:** All resource features exist in `packages/synetics.dev/src/resource/`
 
 #### Category 3: Error Boundaries (4 plans)
 
@@ -112,7 +112,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 - ❌ error-propagation-recovery
 - ❌ nested-boundary-coordination
 
-**Reality:** All error boundary features exist in `packages/pulsar.dev/src/error-boundary/`
+**Reality:** All error boundary features exist in `packages/synetics.dev/src/error-boundary/`
 
 #### Category 4: Lazy Loading (4 plans)
 
@@ -130,7 +130,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 - ❌ portal-cleanup-handling
 - ❌ portal-context-preservation
 
-**Reality:** All portal features exist in `packages/pulsar.dev/src/portal/`
+**Reality:** All portal features exist in `packages/synetics.dev/src/portal/`
 
 #### Category 6: Context API (4 plans)
 
@@ -139,7 +139,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 - ❌ context-value-propagation
 - ❌ context-optimization
 
-**Reality:** All context features exist in `packages/pulsar.dev/src/context/`
+**Reality:** All context features exist in `packages/synetics.dev/src/context/`
 
 **Total Archived:** 22 plans
 
@@ -147,7 +147,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 
 ## 📁 Archived Location
 
-**Path:** `packages/pulsar-transformer/docs/implementation-plans/archive-misconceived-runtime-features/`
+**Path:** `packages/synetics-transformer/docs/implementation-plans/archive-misconceived-runtime-features/`
 
 **Contents:** 22 folders moved verbatim
 
@@ -159,7 +159,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 
 ### 1. PSR-TRANSFORMER-SCOPE.md
 
-**Location:** `packages/pulsar-transformer/docs/PSR-TRANSFORMER-SCOPE.md`
+**Location:** `packages/synetics-transformer/docs/PSR-TRANSFORMER-SCOPE.md`
 
 **Purpose:** Define clear boundary between transformer and runtime
 
@@ -172,7 +172,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 
 ### 2. Rewritten Plans (3 files)
 
-**Location:** `packages/pulsar-transformer/docs/implementation-plans/[feature]/2026-02-11-REWRITTEN-*.md`
+**Location:** `packages/synetics-transformer/docs/implementation-plans/[feature]/2026-02-11-REWRITTEN-*.md`
 
 **Files:**
 
@@ -293,7 +293,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 - [x] Created scope clarification document
 - [x] Rewrote 3 partially valid plans
 - [x] Updated timeline from 19 weeks to 6-8 weeks
-- [x] Documented runtime features location (`packages/pulsar.dev/src/`)
+- [x] Documented runtime features location (`packages/synetics.dev/src/`)
 - [x] Clarified transformer vs runtime boundary
 - [x] Preserved valid plans (14 plans)
 
@@ -312,7 +312,7 @@ These are **runtime features** from `@pulsar-framework/pulsar.dev`:
 
 1. **Verify Current Transformer:** Test that it already handles `<Show>`, `<Portal>`, `createResource()` correctly (as normal JSX/functions)
 2. **Focus on Foundation:** Prioritize Phase 1 (template literals, complex JSX, generics, type inference)
-3. **Test with Runtime:** Ensure transformed output works with `@pulsar-framework/pulsar.dev` runtime
+3. **Test with Runtime:** Ensure transformed output works with `@synetics/synetics.dev` runtime
 4. **Document Integration:** Create guide showing how transformer + runtime work together
 
 ---
@@ -397,7 +397,7 @@ Transformer successfully transforms PSR files that use:
 - ✅ Runtime primitives (`createSignal`, `createResource`, etc.) - as normal function calls
 - ✅ Runtime components (`<Show>`, `<Portal>`, etc.) - as normal JSX
 
-**Output:** Valid JavaScript that runs with `@pulsar-framework/pulsar.dev` runtime
+**Output:** Valid JavaScript that runs with `@synetics/synetics.dev` runtime
 
 ---
 

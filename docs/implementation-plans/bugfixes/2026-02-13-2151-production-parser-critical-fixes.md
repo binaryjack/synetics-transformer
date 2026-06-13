@@ -2,14 +2,14 @@
 
 **Date:** 2026-02-13 21:51  
 **Status:** READY FOR IMPLEMENTATION  
-**Priority:** CRITICAL - Blocking pulsar-ui.dev production
+**Priority:** CRITICAL - Blocking synetics-ui.dev production
 
 ## 🚨 IDENTIFIED BUGS FROM REAL-WORLD TESTING
 
 ### BUG 1: JSX Member Expression Tag Names - PARSER FAILURE
 
 **Status:** ❌ BROKEN  
-**Impact:** BLOCKS context-test.psr and other Provider patterns
+**Impact:** BLOCKS context-test.syn and other Provider patterns
 
 **Error:**
 
@@ -20,7 +20,7 @@ Expected attribute name, got DOT at line 25
 
 **Root Cause:**
 
-- File: `packages/pulsar-transformer/src/parser/prototypes/parse-jsx-element.ts`
+- File: `packages/synetics-transformer/src/parser/prototypes/parse-jsx-element.ts`
 - Line: 163-168 in `parseJSXOpeningElement()`
 - Issue: Only expects single `IDENTIFIER` token for tag names
 - Missing: Member expression parsing (`Component.Subcomponent`)
@@ -57,7 +57,7 @@ const result = base ** exponent;  // ❌ UNSUPPORTED
 
 **Root Cause:**
 
-- File: `packages/pulsar-transformer/src/parser/prototypes/parse-expression.ts`
+- File: `packages/synetics-transformer/src/parser/prototypes/parse-expression.ts`
 - Missing: `**` operator in binary expression parsing
 - TokenType: Need `EXPONENTIATION` token type
 
@@ -69,7 +69,7 @@ const result = base ** exponent;  // ❌ UNSUPPORTED
 **Symptoms:**
 
 ```
-❌ VALIDATION FAILED: context-test.psr
+❌ VALIDATION FAILED: context-test.syn
    Output too small: 32 bytes (expected > 500)
    Input has exports but output doesn't
    Component found but $REGISTRY.execute missing
@@ -186,14 +186,14 @@ const result = base ** exponent;  // ❌ UNSUPPORTED
 
 3. **Integration Test:**
    ```jsx
-   // Real context-test.psr content should work
+   // Real context-test.syn content should work
    <ThemeContext.Provider value={themeValue}>{props.children}</ThemeContext.Provider>
    ```
 
 ### Validation Tests
 
 - All existing tests must pass
-- context-test.psr must transform successfully
+- context-test.syn must transform successfully
 - Output validation must pass (>500 bytes, exports present)
 
 ---
@@ -256,8 +256,8 @@ case TokenTypeEnum.EXPONENTIATION:
 
 ### Must Work:
 
-✅ `pulsar-ui.dev` loads without parser errors  
-✅ `context-test.psr` transforms successfully  
+✅ `synetics-ui.dev` loads without parser errors  
+✅ `context-test.syn` transforms successfully  
 ✅ All `ThemeContext.Provider` patterns work  
 ✅ Exponentiation expressions parse correctly  
 ✅ All existing tests pass  
@@ -282,7 +282,7 @@ case TokenTypeEnum.EXPONENTIATION:
 
 **Implementation Order:**
 
-1. JSX member expressions (fixes context-test.psr)
+1. JSX member expressions (fixes context-test.syn)
 2. Exponentiation operator (removes warnings)
 3. Error recovery improvements (general robustness)
 
@@ -478,7 +478,7 @@ case TokenTypeEnum.EXPONENTIATION:
 1. **BUG 1**: JSX member expressions (2 hours)
    - Add `parseJSXElementName()` function
    - Handle `<Component.Sub.Deep>` patterns
-   - Fix context-test.psr blocking issue
+   - Fix context-test.syn blocking issue
 
 2. **BUG 4**: Type import/export support (3-4 hours)
    - Add `import type { IUser }` parsing
@@ -562,7 +562,7 @@ case TokenTypeEnum.EXPONENTIATION:
 
 ### Critical Integration Tests
 
-1. **Real pulsar-ui.dev scenarios:**
+1. **Real synetics-ui.dev scenarios:**
 
    ```jsx
    <ThemeContext.Provider value={themeValue}>
@@ -597,8 +597,8 @@ case TokenTypeEnum.EXPONENTIATION:
 
 ### PHASE 1 SUCCESS (Critical Blockers)
 
-✅ `pulsar-ui.dev` loads without any parser errors  
-✅ `context-test.psr` transforms successfully (>500 bytes)  
+✅ `synetics-ui.dev` loads without any parser errors  
+✅ `context-test.syn` transforms successfully (>500 bytes)  
 ✅ All `*.Provider` JSX patterns work  
 ✅ Type imports/exports work: `import type { IUser }`  
 ✅ Component emission format consistent across files
@@ -629,7 +629,7 @@ case TokenTypeEnum.EXPONENTIATION:
 
 ### REALISTIC TIMELINE
 
-- **PHASE 1 (Critical)**: 6-8 hours → pulsar-ui.dev working
+- **PHASE 1 (Critical)**: 6-8 hours → synetics-ui.dev working
 - **PHASE 2 (Infrastructure)**: 4-5 hours → robust foundation
 - **PHASE 3 (Quality)**: 3-4 hours → all tests passing
 - **PHASE 4 (Advanced)**: 4-6 hours → complete TypeScript support
@@ -638,7 +638,7 @@ case TokenTypeEnum.EXPONENTIATION:
 
 ### RISK MITIGATION
 
-- **Phase 1 has highest ROI** - gets pulsar-ui.dev working
+- **Phase 1 has highest ROI** - gets synetics-ui.dev working
 - **Each phase is independently valuable** - can stop after any phase
 - **Extensive testing at each phase** - prevents regressions
 - **Clear rollback points** - minimal risk of breaking working features

@@ -69,7 +69,7 @@ PSR Source → Lexer → Parser → CodeGenerator → TypeScript
 - ✅ **Performance** - 200K+ tokens/sec, within 10% of Solid.js
 - ✅ **51/58 Tests Passing (87.9%)** - Core features verified, integration tests passing
 
-**Full Status**: See [VERIFICATION-REPORT-2026-02-07.md](../../docs/submodules/pulsar-transformer/sessions/VERIFICATION-REPORT-2026-02-07.md)
+**Full Status**: See [VERIFICATION-REPORT-2026-02-07.md](../../docs/submodules/synetics-transformer/sessions/VERIFICATION-REPORT-2026-02-07.md)
 
 ---
 
@@ -468,7 +468,7 @@ export function SafeDemo(): HTMLElement {
 ### Live Examples
 
 **220+ transformed components in production:**
-- [pulsar-ui.dev showcase](https://github.com/binaryjack/pulsar-ui.dev/tree/main/src/showcase) - 80+ advanced examples
+- [synetics-ui.dev showcase](https://github.com/binaryjack/synetics-ui.dev/tree/main/src/showcase) - 80+ advanced examples
 - All transformations verified in build system
 - Zero TypeScript errors in output
 
@@ -537,7 +537,7 @@ pnpm test pipeline
 - ⚠️ Type System: 1/7 tests passing (parser limitation documented)
 - ✅ Build: 0 TypeScript errors
 
-**Overall: 51/58 tests passing (87.9%)** - See [VERIFICATION-REPORT-2026-02-07.md](../../docs/submodules/pulsar-transformer/sessions/VERIFICATION-REPORT-2026-02-07.md) for details
+**Overall: 51/58 tests passing (87.9%)** - See [VERIFICATION-REPORT-2026-02-07.md](../../docs/submodules/synetics-transformer/sessions/VERIFICATION-REPORT-2026-02-07.md) for details
 
 ---
 
@@ -547,10 +547,10 @@ pnpm test pipeline
 
 ```typescript
 // vite.config.ts
-import { pulsarPlugin } from '@pulsar/vite-plugin';
+import { syneticsPlugin } from '@pulsar/vite-plugin';
 
 export default {
-  plugins: [pulsarPlugin()]
+  plugins: [syneticsPlugin()]
 };
 ```
 
@@ -561,7 +561,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.psr$/,
+        test: /\.syn$/,
         use: '@pulsar/webpack-loader'
       }
     ]
@@ -572,10 +572,10 @@ module.exports = {
 ### ESBuild Plugin
 
 ```typescript
-import { pulsarPlugin } from '@pulsar/esbuild-plugin';
+import { syneticsPlugin } from '@pulsar/esbuild-plugin';
 
 build({
-  plugins: [pulsarPlugin()]
+  plugins: [syneticsPlugin()]
 });
 ```
 
@@ -587,7 +587,7 @@ build({
 
 ```bash
 git clone <repo>
-cd packages/pulsar-transformer
+cd packages/synetics-transformer
 pnpm install
 pnpm build
 ```
@@ -674,8 +674,8 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines.
 ## Support
 
 - **Documentation**: [docs/](./docs/)
-- **Issues**: [GitHub Issues](https://github.com/binaryjack/pulsar-transformer/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/binaryjack/pulsar-transformer/discussions)
+- **Issues**: [GitHub Issues](https://github.com/binaryjack/synetics-transformer/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/binaryjack/synetics-transformer/discussions)
 
 ---
 
@@ -683,7 +683,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines.
 
 **Verified**: ✅ Independent audit complete - See [VERIFICATION-REPORT-2026-02-07.md](./VERIFICATION-REPORT-2026-02-07.md)
     {
-      name: 'pulsar-transformer',
+      name: 'synetics-transformer',
       transform(code, id) {
         if (id.endsWith('.tsx') || id.endsWith('.jsx')) {
           // Apply transformer
@@ -698,7 +698,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines.
 ### Programmatic API
 
 ```typescript
-import pulsarTransformer from '@pulsar-framework/transformer';
+import pulsarTransformer from '@synetics/transformer';
 import * as ts from 'typescript';
 
 const program = ts.createProgram(['src/app.tsx'], compilerOptions);

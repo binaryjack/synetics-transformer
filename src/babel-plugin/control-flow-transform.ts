@@ -62,21 +62,21 @@ export function createControlFlowTransform(t: typeof BabelTypes) {
       // (e.g. tasks()) subscribe to changes and the DOM updates on setTasks().
       // We preserve the original tag identifier so the call matches the import alias.
       if (tagName === 'For') {
-        if (_program) addImport(_program, 'ForRegistry', '@pulsar-framework/pulsar.dev', t);
+        if (_program) addImport(_program, 'ForRegistry', '@synetics/synetics.dev', t);
         transformRegistryList(path, t, 'For');
         return;
       }
 
       // Handle <ForRegistry> (runtime component)
       if (tagName === 'ForRegistry') {
-        if (_program) addImport(_program, 'ForRegistry', '@pulsar-framework/pulsar.dev', t);
+        if (_program) addImport(_program, 'ForRegistry', '@synetics/synetics.dev', t);
         transformForRegistry(path, t);
         return;
       }
 
       // Handle <Index> (runtime component)
       if (tagName === 'Index') {
-        if (_program) addImport(_program, 'Index', '@pulsar-framework/pulsar.dev', t);
+        if (_program) addImport(_program, 'Index', '@synetics/synetics.dev', t);
         transformIndex(path, t);
         return;
       }
@@ -647,7 +647,7 @@ function transformBoundary(
 
   props.push(t.objectProperty(t.identifier('children'), childrenExpr));
 
-  if (program) addImport(program, 'Tryer', '@pulsar-framework/pulsar.dev', t);
+  if (program) addImport(program, 'Tryer', '@synetics/synetics.dev', t);
 
   path.replaceWith(t.callExpression(t.identifier('Tryer'), [t.objectExpression(props)]));
 }
@@ -680,7 +680,7 @@ function tryTransformMapToForRegistry(
   const callback = expr.arguments[0] as BabelTypes.Expression | undefined;
   if (!callback) return false;
 
-  if (program) addImport(program, 'ForRegistry', '@pulsar-framework/pulsar.dev', t);
+  if (program) addImport(program, 'ForRegistry', '@synetics/synetics.dev', t);
 
   // Auto-derive key from the callback's first parameter: (item) => item.id
   // The param name is already in the callback — no guessing needed.
@@ -774,7 +774,7 @@ function tryTransformTernaryToShowRegistry(
       ? node
       : t.arrowFunctionExpression([], node as any);
 
-  if (program) addImport(program, 'ShowRegistry', '@pulsar-framework/pulsar.dev', t);
+  if (program) addImport(program, 'ShowRegistry', '@synetics/synetics.dev', t);
 
   const callExpr = t.callExpression(t.identifier('ShowRegistry'), [
     t.objectExpression([
@@ -806,7 +806,7 @@ function tryTransformAndToShowRegistry(
   if (!needsReactiveWrapper(left, t)) return false;
   if (!t.isJSXElement(right) && !t.isJSXFragment(right)) return false;
 
-  if (program) addImport(program, 'ShowRegistry', '@pulsar-framework/pulsar.dev', t);
+  if (program) addImport(program, 'ShowRegistry', '@synetics/synetics.dev', t);
 
   const callExpr = t.callExpression(t.identifier('ShowRegistry'), [
     t.objectExpression([

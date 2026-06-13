@@ -73,7 +73,7 @@ export const Counter = ({id}: ICounterProps) => {
 **Added imports:**
 
 ```typescript
-import { $REGISTRY, createSignal, t_element } from '@pulsar-framework/pulsar.dev';
+import { $REGISTRY, createSignal, t_element } from '@synetics/synetics.dev';
 ```
 
 ### 3. Export Handling
@@ -123,7 +123,7 @@ Correctly handles `ExportNamedDeclaration` wrapping components.
 ### Golden Fixture Test: 1/1 ✅
 
 ```
-✓ should transform Counter.psr through full pipeline
+✓ should transform Counter.syn through full pipeline
 ```
 
 **Total: 6/6 tests passing**
@@ -185,7 +185,7 @@ TypeScript Output
 7. ✅ Type annotation handling
 8. ✅ JSX pass-through
 9. ✅ Reactivity preservation
-10. ✅ Golden fixture (Counter.psr) transformation
+10. ✅ Golden fixture (Counter.syn) transformation
 
 ---
 
@@ -269,7 +269,7 @@ pnpm tsc --noEmit
 ### Optional Improvements
 
 1. Add return type annotation to arrow functions
-2. Test with Badge.psr and Drawer.psr fixtures
+2. Test with Badge.syn and Drawer.syn fixtures
 3. Handle edge cases (empty components, async components)
 4. Add more comprehensive error handling
 5. Performance optimization (if needed)
@@ -319,7 +319,7 @@ pnpm tsc --noEmit
 - **Test Coverage:** 100% of implemented features
 - **Type Safety:** 100% (no `any` types)
 - **Rule Compliance:** 100% (zero violations)
-- **Golden Fixture:** 1/1 passing (Counter.psr)
+- **Golden Fixture:** 1/1 passing (Counter.syn)
 - **Compilation:** ✅ (no transformer errors)
 
 ---

@@ -113,7 +113,7 @@ Tests:       58 total
 
 ### CURRENT: "3-Phase Pipeline (Monolithic Approach)"
 
-**Actual implementation in [`src/index.ts`](c:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\pulsar-transformer\\src\\index.ts):**
+**Actual implementation in [`src/index.ts`](c:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\synetics-transformer\\src\\index.ts):**
 ```typescript
 // Phase 1: Lexer
 const lexer = createLexer(source, options.filePath);
@@ -134,7 +134,7 @@ const code = generator.generate();
 - Emits TypeScript code strings directly
 - **Works but mixes concerns** (transformation + emission in one phase)
 
-**Example from [`generate-statement.ts`](c:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\pulsar-transformer\\src\\code-generator\\prototypes\\generate-statement.ts):**
+**Example from [`generate-statement.ts`](c:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\synetics-transformer\\src\\code-generator\\prototypes\\generate-statement.ts):**
 ```typescript
 CodeGenerator.prototype.generateComponent = function (node) {
   // TRANSFORMATION: ComponentDeclaration → function syntax
@@ -280,7 +280,7 @@ below would separate these for cleaner architecture.
 **Line 73:** "Full Status: See VERIFICATION-REPORT-2026-02-07.md"
 
 ⚠️ **INCORRECT PATH** - Report is at:  
-`docs/submodules/pulsar-transformer/sessions/VERIFICATION-REPORT-2026-02-07.md`  
+`docs/submodules/synetics-transformer/sessions/VERIFICATION-REPORT-2026-02-07.md`  
 Not in the package directory.
 
 **Line 51:** "PSR Source → Lexer → Parser → Analyzer → Transform → Emitter → TypeScript"
@@ -355,7 +355,7 @@ This describes the planned 5-phase architecture.
 - ✅ Auto-imports (`$REGISTRY`, `createSignal`, etc.)
 - ✅ Preserves reactivity calls
 
-**Example transformation (from [`generate-statement.ts`](c:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\pulsar-transformer\\src\\code-generator\\prototypes\\generate-statement.ts)):**
+**Example transformation (from [`generate-statement.ts`](c:\\Users\\Piana Tadeo\\source\\repos\\visual-schema-builder\\packages\\synetics-transformer\\src\\code-generator\\prototypes\\generate-statement.ts)):**
 ```typescript
 // INPUT: PSR ComponentDeclaration AST node
 { type: 'ComponentDeclaration', name: 'Counter', params: [...], body: {...} }

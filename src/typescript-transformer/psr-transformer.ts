@@ -23,8 +23,8 @@ export const PSRTransformer: IPSRTransformer = function (
     enableTracking: true,
     enableSourceMaps: false,
     strictMode: true,
-    registryImportPath: '@pulsar-framework/pulsar.dev',
-    frameworkImportPath: '@pulsar-framework/pulsar.dev',
+    registryImportPath: '@synetics/synetics.dev',
+    frameworkImportPath: '@synetics/synetics.dev',
     ...options,
   };
   this.imports = new Set<string>();

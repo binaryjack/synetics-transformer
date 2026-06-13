@@ -24,7 +24,7 @@
 **Run:**
 
 ```powershell
-cd packages/pulsar-transformer
+cd packages/synetics-transformer
 pnpm test --verbose 2>&1 | Select-String "Tests:"
 ```
 

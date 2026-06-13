@@ -55,14 +55,14 @@ describe('Full Pipeline Integration', () => {
     return normalizedCode;
   };
 
-  it('should transform 01-counter.psr correctly', async () => {
-    const input = readFileSync(join(psrPath, '01-counter.psr'), 'utf-8');
+  it('should transform 01-counter.syn correctly', async () => {
+    const input = readFileSync(join(psrPath, '01-counter.syn'), 'utf-8');
     const expected = readFileSync(join(expectedPath, '01-counter.expected.ts'), 'utf-8');
 
     // Import and use createPipeline with debug enabled
     const { createPipeline } = await import('../../src/index.js');
     const pipeline = createPipeline({
-      filePath: '01-counter.psr',
+      filePath: '01-counter.syn',
       debug: true,
       debugLevel: 'debug',
       debugChannels: ['pipeline', 'jsx', 'codegen'],
@@ -80,8 +80,8 @@ describe('Full Pipeline Integration', () => {
     expect(normalize(result.code)).toBe(normalize(expected));
   });
 
-  it('should transform 02-badge.psr correctly', async () => {
-    const input = readFileSync(join(psrPath, '02-badge.psr'), 'utf-8');
+  it('should transform 02-badge.syn correctly', async () => {
+    const input = readFileSync(join(psrPath, '02-badge.syn'), 'utf-8');
     const expected = readFileSync(join(expectedPath, '02-badge.expected.ts'), 'utf-8');
 
     try {
@@ -115,8 +115,8 @@ describe('Full Pipeline Integration', () => {
     }
   });
 
-  it('should transform 03-drawer.psr correctly', async () => {
-    const input = readFileSync(join(psrPath, '03-drawer.psr'), 'utf-8');
+  it('should transform 03-drawer.syn correctly', async () => {
+    const input = readFileSync(join(psrPath, '03-drawer.syn'), 'utf-8');
     const expected = readFileSync(join(expectedPath, '03-drawer.expected.ts'), 'utf-8');
 
     const { createPipeline } = await import('../../src/index.js');

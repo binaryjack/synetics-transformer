@@ -93,7 +93,7 @@ Tests:       58 total
 **Command to verify:**
 
 ```bash
-cd packages/pulsar-transformer
+cd packages/synetics-transformer
 pnpm test 2>&1 | Select-String "Tests:"
 # Expected output: "Tests: 7 failed | 51 passed (58)"
 ```
@@ -141,8 +141,8 @@ component Counter() {
 }
 
 // OUTPUT TypeScript:
-import { createSignal } from '@pulsar-framework/pulsar.dev';
-import { t_element, $REGISTRY } from '@pulsar-framework/pulsar.dev';
+import { createSignal } from '@synetics/synetics.dev';
+import { t_element, $REGISTRY } from '@synetics/synetics.dev';
 
 export function Counter(): HTMLElement {
   return $REGISTRY.execute('component:Counter', () => {

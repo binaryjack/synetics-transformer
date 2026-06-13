@@ -292,7 +292,7 @@ Before starting transformer implementation:
 - ✅ Component transformation working
 - ✅ Import management functional
 - ✅ Export handling complete
-- ✅ Golden fixture (Counter.psr) passing
+- ✅ Golden fixture (Counter.syn) passing
 - ✅ Zero rule violations
 - ✅ Compiles without errors
 - ✅ Full test coverage

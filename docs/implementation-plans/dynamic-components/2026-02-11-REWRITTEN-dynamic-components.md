@@ -7,11 +7,11 @@
 
 ## ⚠️ CRITICAL CLARIFICATION
 
-**`<Dynamic>` is a RUNTIME COMPONENT from `@pulsar-framework/pulsar.dev`, NOT a transformer feature.**
+**`<Dynamic>` is a RUNTIME COMPONENT from `@synetics/synetics.dev`, NOT a transformer feature.**
 
 The transformer does NOT implement `<Dynamic>` switching logic. The runtime already provides it.
 
-**See:** `packages/pulsar.dev/src/control-flow/dynamic/` (if exists)
+**See:** `packages/synetics.dev/src/control-flow/dynamic/` (if exists)
 
 ---
 
@@ -21,7 +21,7 @@ The transformer does NOT implement `<Dynamic>` switching logic. The runtime alre
 
 1. Parse `<Dynamic component={...}>` as normal JSX
 2. Transform to `t_element('Dynamic', { component: ... }, [children])`
-3. Auto-import `Dynamic` from `@pulsar-framework/pulsar.dev` if used
+3. Auto-import `Dynamic` from `@synetics/synetics.dev` if used
 4. Preserve reactive expressions in `component` prop
 5. Handle spread props correctly
 6. **That's it.**
@@ -49,7 +49,7 @@ t_element('Dynamic', { component: currentComponent() }, []);
 **Auto-import:**
 
 ```js
-import { Dynamic } from '@pulsar-framework/pulsar.dev';
+import { Dynamic } from '@synetics/synetics.dev';
 ```
 
 ### 2. Preserve Reactive Expressions
@@ -279,7 +279,7 @@ component App() {
 
 **Expected:**
 
-- ✅ Auto-import: `import { Dynamic } from '@pulsar-framework/pulsar.dev';`
+- ✅ Auto-import: `import { Dynamic } from '@synetics/synetics.dev';`
 
 ### Test 6: Conditional Component
 
@@ -313,9 +313,9 @@ Before marking this plan complete:
 
 ## 📖 Related
 
-- Runtime implementation: `packages/pulsar.dev/src/control-flow/dynamic/` (if exists)
-- Scope definition: `packages/pulsar-transformer/docs/PSR-TRANSFORMER-SCOPE.md`
-- JSX transformation: `packages/pulsar-transformer/src/transformer/prototypes/transform-jsx-element.ts`
+- Runtime implementation: `packages/synetics.dev/src/control-flow/dynamic/` (if exists)
+- Scope definition: `packages/synetics-transformer/docs/PSR-TRANSFORMER-SCOPE.md`
+- JSX transformation: `packages/synetics-transformer/src/transformer/prototypes/transform-jsx-element.ts`
 
 ---
 

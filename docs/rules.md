@@ -60,7 +60,7 @@ work mode with your user:
 - Accepted are CHECKMARK and RED CROSS (TRUE / FALSE)
 
 Development structure:
-ALWAYS UNDER => `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\pulsar-transformer\docs\implementation-plans\[feature]\...`
+ALWAYS UNDER => `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\synetics-transformer\docs\implementation-plans\[feature]\...`
 
 `[archive]\` <= all old files
 `[analyse]\` <= all related analysis files

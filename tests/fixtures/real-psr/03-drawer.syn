@@ -3,8 +3,8 @@
  * Tests: useEffect, lifecycle, conditional rendering, complex JSX
  */
 
-import { useEffect } from '@pulsar-framework/pulsar.dev';
-import { cn } from '@pulsar-framework/design-tokens';
+import { useEffect } from '@synetics/synetics.dev';
+import { cn } from '@synetics/design-tokens';
 
 export interface IDrawerProps {
   open: boolean;

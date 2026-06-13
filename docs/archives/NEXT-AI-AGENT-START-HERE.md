@@ -191,8 +191,8 @@ component Counter() {
 **ALWAYS add these imports at the top:**
 
 ```typescript
-import { createSignal, useEffect } from '@pulsar-framework/pulsar.dev';
-import { t_element, $REGISTRY } from '@pulsar-framework/pulsar.dev';
+import { createSignal, useEffect } from '@synetics/synetics.dev';
+import { t_element, $REGISTRY } from '@synetics/synetics.dev';
 ```
 
 **Strategy:**
@@ -352,7 +352,7 @@ export function addImports(program: IProgramNode, context: ITransformContext): v
       { type: 'ImportSpecifier', imported: 'createSignal', local: 'createSignal' },
       { type: 'ImportSpecifier', imported: 'useEffect', local: 'useEffect' },
     ],
-    source: { type: 'StringLiteral', value: '@pulsar-framework/pulsar.dev' },
+    source: { type: 'StringLiteral', value: '@synetics/synetics.dev' },
   });
 
   imports.push({
@@ -361,7 +361,7 @@ export function addImports(program: IProgramNode, context: ITransformContext): v
       { type: 'ImportSpecifier', imported: 't_element', local: 't_element' },
       { type: 'ImportSpecifier', imported: '$REGISTRY', local: '$REGISTRY' },
     ],
-    source: { type: 'StringLiteral', value: '@pulsar-framework/pulsar.dev' },
+    source: { type: 'StringLiteral', value: '@synetics/synetics.dev' },
   });
 
   // Add at top of program
@@ -433,7 +433,7 @@ const code = generator.generate();
 ```typescript
 // __tests__/transformer/transform-component.test.ts
 it('should transform Counter component', () => {
-  const source = fs.readFileSync('tests/fixtures/real-psr/1-counter/counter.psr', 'utf-8');
+  const source = fs.readFileSync('tests/fixtures/real-psr/1-counter/counter.syn', 'utf-8');
   const lexer = createLexer(source);
   const tokens = lexer.scanTokens();
   const parser = createParser(tokens);
@@ -599,9 +599,9 @@ Before marking transformer as DONE:
 
 - [ ] Run `pnpm test transformer` - all pass
 - [ ] Run `pnpm test` - no regressions
-- [ ] Transform Counter.psr - works
-- [ ] Transform Badge.psr - works
-- [ ] Transform Drawer.psr - works
+- [ ] Transform Counter.syn - works
+- [ ] Transform Badge.syn - works
+- [ ] Transform Drawer.syn - works
 - [ ] Full pipeline test - works
 - [ ] No `any` types
 - [ ] No ES6 classes

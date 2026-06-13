@@ -122,7 +122,7 @@ export function createJSXTransform(t: typeof BabelTypes): VisitorObj {
 
         // Track import
         const program = path.findParent((p) => p.isProgram()) as NodePath<BabelTypes.Program>;
-        addImport(program, 't_element', '@pulsar-framework/pulsar.dev', t);
+        addImport(program, 't_element', '@synetics/synetics.dev', t);
       }
     },
 
@@ -139,7 +139,7 @@ export function createJSXTransform(t: typeof BabelTypes): VisitorObj {
       path.replaceWith(fragmentCall);
 
       const program = path.findParent((p) => p.isProgram()) as NodePath<BabelTypes.Program>;
-      addImport(program, 't_element', '@pulsar-framework/pulsar.dev', t);
+      addImport(program, 't_element', '@synetics/synetics.dev', t);
     },
   };
 }

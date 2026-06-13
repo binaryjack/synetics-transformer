@@ -315,8 +315,8 @@ semantic-analyzer/
 ## API Usage
 
 ```typescript
-import { SemanticAnalyzer } from '@pulsar-framework/transformer';
-import { createLexer, createParser } from '@pulsar-framework/transformer';
+import { SemanticAnalyzer } from '@synetics/transformer';
+import { createLexer, createParser } from '@synetics/transformer';
 
 // Parse source
 const lexer = createLexer(source);
@@ -325,7 +325,7 @@ const parser = createParser(tokens);
 const ast = parser.parse();
 
 // Analyze AST
-const analyzer = new SemanticAnalyzer(ast, 'file.psr');
+const analyzer = new SemanticAnalyzer(ast, 'file.syn');
 const result = analyzer.analyze();
 
 // Check results

@@ -1,10 +1,10 @@
 /**
- * Expected TypeScript output for 03-drawer.psr
+ * Expected TypeScript output for 03-drawer.syn
  * Tests: useEffect preservation, complex logic, early returns
  */
 
-import { cn } from '@pulsar-framework/design-tokens';
-import { $REGISTRY, t_element, useEffect } from '@pulsar-framework/pulsar.dev';
+import { cn } from '@synetics/design-tokens';
+import { $REGISTRY, t_element, useEffect } from '@synetics/synetics.dev';
 
 export interface IDrawerProps {
   open: boolean;

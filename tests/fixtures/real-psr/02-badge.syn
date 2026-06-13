@@ -3,7 +3,7 @@
  * Tests: props destructuring, conditional rendering, static JSX
  */
 
-import { cn } from '@pulsar-framework/design-tokens';
+import { cn } from '@synetics/design-tokens';
 
 export interface IBadgeProps {
   label: string;

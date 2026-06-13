@@ -31,9 +31,43 @@ export function checkUnusedSymbols(this: ISemanticAnalyzer): void {
  * Check for dead code
  */
 export function checkDeadCode(this: ISemanticAnalyzer): void {
-  // Future: Implement dead code detection
-  // - Code after return statements
-  // - Unreachable branches
-  // - Unused functions
+  // Helper to walk nodes and look for unreachable code in blocks
+  const walkForDeadCode = (node: any) => {
+    if (!node) return;
+
+    if (node.type === 'BlockStatement' && Array.isArray(node.body)) {
+      let foundReturn = false;
+      let returnLine = -1;
+
+      for (const stmt of node.body) {
+        if (foundReturn) {
+          // Any statement after a return is dead code
+          this.addWarning(
+            'dead-code',
+            `Unreachable code detected after return statement (line ${returnLine})`,
+            stmt
+          );
+          break; // only warn on the first unreachable statement
+        }
+
+        if (stmt.type === 'ReturnStatement') {
+          foundReturn = true;
+          returnLine = stmt.loc?.start?.line ?? -1;
+        }
+      }
+      
+      // Continue walking inside the block statements
+      node.body.forEach(walkForDeadCode);
+    } else if (node.type === 'FunctionDeclaration' || node.type === 'ComponentDeclaration') {
+      walkForDeadCode(node.body);
+    } else if (node.type === 'Program') {
+      node.body.forEach(walkForDeadCode);
+    } else if (node.type === 'IfStatement') {
+      walkForDeadCode(node.consequent);
+      if (node.alternate) walkForDeadCode(node.alternate);
+    }
+  };
+
+  walkForDeadCode(this.ast);
 }
 

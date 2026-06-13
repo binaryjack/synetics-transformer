@@ -8,7 +8,7 @@ import * as babel from '@babel/parser';
 import babelTraverseDefault from '@babel/traverse';
 import * as t from '@babel/types';
 import { adaptBabelAst } from './babel-ast-adapter.js';
-import pulsarPlugin from './babel-plugin/index.js';
+import syneticsPlugin from './babel-plugin/index.js';
 import { SemanticAnalyzer } from './semantic-analyzer/index.js';
 import type { IDiagnostic, IPipelineOptions, IPipelineResult } from './types.js';
 
@@ -47,7 +47,7 @@ function preprocessPSR(source: string): string {
 
 /**
  * Detect whether source contains JSX syntax.
- * Cheap string scan — avoids full parse for non-component .psr files.
+ * Cheap string scan — avoids full parse for non-component .syn files.
  */
 function containsJSX(source: string): boolean {
   // Match opening JSX tags: <Foo, <div, <br/>, </Foo>
@@ -64,14 +64,14 @@ export async function transformWithBabelPipeline(
   const startTime = perf.now();
   const diagnostics: IDiagnostic[] = [];
 
-  // Passthrough: .psr files with no JSX are treated as plain TypeScript.
+  // Passthrough: .syn files with no JSX are treated as plain TypeScript.
   // Skip all Pulsar-specific transformation — just strip TS syntax via Babel.
   if (!containsJSX(source)) {
     try {
       const ast = parse(source, {
         sourceType: 'module',
         plugins: ['typescript'],
-        sourceFilename: options.filePath || 'input.psr',
+        sourceFilename: options.filePath || 'input.syn',
       });
       const output = generate(ast, { comments: true }, source);
       const totalTime = perf.now() - startTime;
@@ -104,7 +104,7 @@ export async function transformWithBabelPipeline(
     const ast = parse(preprocessed, {
       sourceType: 'module',
       plugins: ['jsx', 'typescript', 'decorators-legacy'],
-      sourceFilename: options.filePath || 'input.psr',
+      sourceFilename: options.filePath || 'input.syn',
     });
 
     // Step 2.5: Semantic Analysis
@@ -113,7 +113,7 @@ export async function transformWithBabelPipeline(
     // the pipeline unless the caller sets options.strictSemantic = true.
     try {
       const psrAst = adaptBabelAst(ast);
-      const analyzer = new (SemanticAnalyzer as any)(psrAst, options.filePath || 'input.psr');
+      const analyzer = new (SemanticAnalyzer as any)(psrAst, options.filePath || 'input.syn');
       const semanticResult = analyzer.analyze();
 
       for (const err of semanticResult.errors) {
@@ -150,32 +150,32 @@ export async function transformWithBabelPipeline(
           },
         };
       }
-    } catch (_semanticError) {
+    } catch (_semanticError: any) {
       // SemanticAnalyzer failure must never kill the pipeline —
       // surface as a warning and continue with transformation.
       diagnostics.push({
         type: 'warning',
         phase: 'semantic',
-        message: 'SemanticAnalyzer encountered an internal error — analysis skipped.',
+        message: 'SemanticAnalyzer encountered an internal error: ' + (_semanticError?.stack || _semanticError?.message || _semanticError) + ' — analysis skipped.',
       });
     }
 
     // Step 3: Transform with Pulsar plugin
-    traverse(ast, pulsarPlugin({ types: t }).visitor);
+    traverse(ast, syneticsPlugin({ types: t }).visitor);
 
     if (options.debug) {
       console.log('\n=== TRANSFORMATION COMPLETE ===');
     }
 
     // Step 4: Generate code with sourcemaps so the vite plugin can chain
-    // PSR → TS → JS and give debuggers full fidelity to the original .psr source.
+    // PSR → TS → JS and give debuggers full fidelity to the original .syn source.
     const output = generate(
       ast,
       {
         retainLines: false,
         comments: true,
         sourceMaps: true,
-        sourceFileName: options.filePath || 'input.psr',
+        sourceFileName: options.filePath || 'input.syn',
         jsescOption: {
           quotes: 'single',
           minimal: true,

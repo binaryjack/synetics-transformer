@@ -13,12 +13,12 @@ import type * as BabelTypes from '@babel/types';
  *
  * @param program - Program node path
  * @param specifier - Import specifier name (e.g., 't_element')
- * @param source - Import source (e.g., '@pulsar-framework/pulsar.dev')
+ * @param source - Import source (e.g., '@synetics/synetics.dev')
  * @param t - Babel types helper
  *
  * @example
- * addImport(program, 't_element', '@pulsar-framework/pulsar.dev', t)
- * // Adds: import { t_element } from '@pulsar-framework/pulsar.dev';
+ * addImport(program, 't_element', '@synetics/synetics.dev', t)
+ * // Adds: import { t_element } from '@synetics/synetics.dev';
  */
 export function addImport(
   program: NodePath<BabelTypes.Program>,

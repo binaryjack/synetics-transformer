@@ -166,7 +166,7 @@ pnpm test
 ### Compilation Check
 
 ```powershell
-cd packages/pulsar-transformer
+cd packages/synetics-transformer
 pnpm run build
 # MUST exit 0, NO errors
 ```

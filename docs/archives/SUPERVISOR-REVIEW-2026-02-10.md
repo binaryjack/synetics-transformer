@@ -34,7 +34,7 @@
 **Evidence:**
 
 - Created [src/**tests**/transformer/golden-badge.test.ts](../../../src/__tests__/transformer/golden-badge.test.ts)
-- Test loads `tests/fixtures/real-psr/02-badge.psr`
+- Test loads `tests/fixtures/real-psr/02-badge.syn`
 - Runs full pipeline: Lexer → Parser → Transformer → CodeGenerator
 - Verifies transformed AST structure
 - Verifies import tracking
@@ -45,7 +45,7 @@
 
 ```
 ✓ src/__tests__/transformer/golden-badge.test.ts (1)
-  ✓ Golden Fixture - Badge > should transform Badge.psr through full pipeline
+  ✓ Golden Fixture - Badge > should transform Badge.syn through full pipeline
 ```
 
 **Note:** Badge uses arrow function syntax (`export const Badge = ...`), NOT component syntax (`export component Badge`), so it does NOT get wrapped in `$REGISTRY.execute`. Test correctly reflects this behavior.
@@ -58,7 +58,7 @@
 **Evidence:**
 
 - Created [src/**tests**/transformer/golden-drawer.test.ts](../../../src/__tests__/transformer/golden-drawer.test.ts)
-- Test loads `tests/fixtures/real-psr/03-drawer.psr`
+- Test loads `tests/fixtures/real-psr/03-drawer.syn`
 - Runs full pipeline: Lexer → Parser → Transformer → CodeGenerator
 - Verifies transformed AST structure
 - Verifies import tracking (`useEffect`, `t_element`)
@@ -69,7 +69,7 @@
 
 ```
 ✓ src/__tests__/transformer/golden-drawer.test.ts (1)
-  ✓ Golden Fixture - Drawer > should transform Drawer.psr through full pipeline
+  ✓ Golden Fixture - Drawer > should transform Drawer.syn through full pipeline
 ```
 
 **Note:** Same as Badge - uses arrow function syntax, not wrapped in `$REGISTRY.execute`.
@@ -172,8 +172,8 @@ Get-ChildItem src -Recurse -Filter *.ts | Select-String "TODO|FIXME|XXX|STUB"
 ## 🎯 SUCCESS CRITERIA VERIFICATION
 
 - [x] Transformer integrated into pipeline (feature flag)
-- [x] Badge.psr transforms correctly
-- [x] Drawer.psr transforms correctly
+- [x] Badge.syn transforms correctly
+- [x] Drawer.syn transforms correctly
 - [x] Semantic analyzer compiles without errors
 - [x] Full test suite passes (no regressions to existing passing tests)
 - [x] Pipeline option documented (via TypeScript interface)

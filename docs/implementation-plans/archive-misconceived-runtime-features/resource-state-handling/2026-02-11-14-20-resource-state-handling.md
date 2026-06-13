@@ -7,7 +7,7 @@ Implement transformation support for resource state handling patterns like `reso
 ## Mandatory AI Task Before Start
 
 - Read carefully and respect the following rules
-- Link to ai-collaboration-rules: `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\pulsar-transformer\docs\ai-collaboration-rules.json`
+- Link to ai-collaboration-rules: `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\synetics-transformer\docs\ai-collaboration-rules.json`
 
 ## What to Do
 

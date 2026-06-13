@@ -367,7 +367,7 @@ class TypeScriptCodeBuilder implements ICodeBuilder {
 class ComponentCodeGenerator {
   generate(node: IComponentDeclaration): string {
     return new TypeScriptCodeBuilder()
-      .addImport('@pulsar-framework/pulsar.dev', '$REGISTRY')
+      .addImport('@synetics/synetics.dev', '$REGISTRY')
       .startFunction(node.name, node.params)
       .addStatement(`return $REGISTRY.execute('component:${node.name}', null, () => {`)
       .indent()

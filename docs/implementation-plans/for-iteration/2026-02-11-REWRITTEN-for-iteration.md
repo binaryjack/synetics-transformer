@@ -7,11 +7,11 @@
 
 ## ⚠️ CRITICAL CLARIFICATION
 
-**`<For>` is a RUNTIME COMPONENT from `@pulsar-framework/pulsar.dev`, NOT a transformer feature.**
+**`<For>` is a RUNTIME COMPONENT from `@synetics/synetics.dev`, NOT a transformer feature.**
 
 The transformer does NOT implement `<For>` iteration logic. The runtime already provides it.
 
-**See:** `packages/pulsar.dev/src/control-flow/for-registry.ts`
+**See:** `packages/synetics.dev/src/control-flow/for-registry.ts`
 
 ---
 
@@ -21,7 +21,7 @@ The transformer does NOT implement `<For>` iteration logic. The runtime already 
 
 1. Parse `<For each={...}>` as normal JSX
 2. Transform to `t_element('For', { each: ..., children: ... }, [])`
-3. Auto-import `For` from `@pulsar-framework/pulsar.dev` if used
+3. Auto-import `For` from `@synetics/synetics.dev` if used
 4. Preserve reactive expressions in `each` prop
 5. Handle the `children` render callback correctly
 6. **That's it.**
@@ -58,7 +58,7 @@ t_element(
 **Auto-import:**
 
 ```js
-import { For } from '@pulsar-framework/pulsar.dev';
+import { For } from '@synetics/synetics.dev';
 ```
 
 ### 2. Preserve Reactive Expressions
@@ -292,7 +292,7 @@ component List() {
 
 **Expected:**
 
-- ✅ Auto-import: `import { For } from '@pulsar-framework/pulsar.dev';`
+- ✅ Auto-import: `import { For } from '@synetics/synetics.dev';`
 
 ### Test 5: Nested JSX in Callback
 
@@ -334,9 +334,9 @@ Before marking this plan complete:
 
 ## 📖 Related
 
-- Runtime implementation: `packages/pulsar.dev/src/control-flow/for-registry.ts`
-- Scope definition: `packages/pulsar-transformer/docs/PSR-TRANSFORMER-SCOPE.md`
-- JSX transformation: `packages/pulsar-transformer/src/transformer/prototypes/transform-jsx-element.ts`
+- Runtime implementation: `packages/synetics.dev/src/control-flow/for-registry.ts`
+- Scope definition: `packages/synetics-transformer/docs/PSR-TRANSFORMER-SCOPE.md`
+- JSX transformation: `packages/synetics-transformer/src/transformer/prototypes/transform-jsx-element.ts`
 
 ---
 

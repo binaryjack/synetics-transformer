@@ -34,12 +34,12 @@ export async function transformWithBabel(
     const jsxVisitor = {
       Program: {
         exit(path: any) {
-          // Ensure @pulsar-framework/pulsar.dev imports exist
+          // Ensure @synetics/synetics.dev imports exist
           let hasPulsarDevImport = false;
           path.node.body.forEach((node: any) => {
             if (
               t.isImportDeclaration(node) &&
-              node.source.value === '@pulsar-framework/pulsar.dev'
+              node.source.value === '@synetics/synetics.dev'
             ) {
               hasPulsarDevImport = true;
               // Ensure component import
@@ -69,7 +69,7 @@ export async function transformWithBabel(
                 t.importSpecifier(t.identifier('component'), t.identifier('component')),
                 t.importSpecifier(t.identifier('t_element'), t.identifier('t_element')),
               ],
-              t.stringLiteral('@pulsar-framework/pulsar.dev')
+              t.stringLiteral('@synetics/synetics.dev')
             );
             path.node.body.unshift(importDecl);
           }

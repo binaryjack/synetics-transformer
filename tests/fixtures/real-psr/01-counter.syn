@@ -3,7 +3,7 @@
  * Tests: signal creation, event handlers, JSX with reactive expressions
  */
 
-import { createSignal } from '@pulsar-framework/pulsar.dev';
+import { createSignal } from '@synetics/synetics.dev';
 
 export interface ICounterProps {
   id?: string;

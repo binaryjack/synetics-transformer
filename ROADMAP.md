@@ -87,4 +87,4 @@ Priority areas based on user feedback:
 
 ---
 
-Track issues: [GitHub Issues](https://github.com/binaryjack/pulsar-transformer/issues)
+Track issues: [GitHub Issues](https://github.com/binaryjack/synetics-transformer/issues)

@@ -219,8 +219,8 @@ if (this.context.usedImports.has('createSignal')) {
 **Golden Fixtures Work Best:**
 
 ```typescript
-it('transforms Counter.psr', () => {
-  const source = readFileSync('fixtures/01-counter.psr', 'utf-8');
+it('transforms Counter.syn', () => {
+  const source = readFileSync('fixtures/01-counter.syn', 'utf-8');
   const lexer = createLexer(source);
   const parser = createParser(lexer.scanTokens());
   const transformer = createTransformer(parser.parse());

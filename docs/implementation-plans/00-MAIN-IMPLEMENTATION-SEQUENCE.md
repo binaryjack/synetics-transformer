@@ -12,7 +12,7 @@
 
 Original plan had **36 features** with **19-week timeline**.
 
-**Validation finding:** 61% of plans (22/36) were misconceived—they confused runtime features (already in `@pulsar-framework/pulsar.dev`) with transformer features.
+**Validation finding:** 61% of plans (22/36) were misconceived—they confused runtime features (already in `@synetics/synetics.dev`) with transformer features.
 
 **Actions taken:**
 
@@ -27,7 +27,7 @@ Original plan had **36 features** with **19-week timeline**.
 
 ---
 
-## 🏗️ Pulsar Framework Architecture Analysis
+## 🏗️ Synetics framework Architecture Analysis
 
 ### Current Implementation Status
 
@@ -128,7 +128,7 @@ Debug System
 - **Priority:** 🟠 High
 - **Dependencies:** Complex JSX Expressions
 - **Transformer Role:** Transform `<Show>` as normal JSX → `t_element('Show', ...)`
-- **Runtime Role:** `<Show>` component from `@pulsar-framework/pulsar.dev` (already exists)
+- **Runtime Role:** `<Show>` component from `@synetics/synetics.dev` (already exists)
 - **Note:** No special transformation—just verify JSX handling works
 - **Estimated Time:** 1-2 days
 
@@ -137,7 +137,7 @@ Debug System
 - **Priority:** 🟠 High
 - **Dependencies:** Show Components
 - **Transformer Role:** Transform `<For>` as normal JSX, handle callback with JSX children
-- **Runtime Role:** `<For>` component from `@pulsar-framework/pulsar.dev` (already exists)
+- **Runtime Role:** `<For>` component from `@synetics/synetics.dev` (already exists)
 - **Note:** Only concern is transforming JSX inside render callback
 - **Estimated Time:** 1-2 days
 
@@ -146,7 +146,7 @@ Debug System
 - **Priority:** 🟠 High
 - **Dependencies:** Show Components, For Iteration
 - **Transformer Role:** Transform `<Dynamic>` as normal JSX, handle spread props
-- **Runtime Role:** `<Dynamic>` component from `@pulsar-framework/pulsar.dev` (if exists)
+- **Runtime Role:** `<Dynamic>` component from `@synetics/synetics.dev` (if exists)
 - **Note:** No special transformation—standard JSX + spread handling
 - **Estimated Time:** 1-2 days
 
@@ -161,7 +161,7 @@ Debug System
 - **Priority:** 🟡 Medium
 - **Dependencies:** None
 - **Transformer Role:** Parse `batch()` calls as normal function calls, auto-import
-- **Runtime Role:** `batch()` from `@pulsar-framework/pulsar.dev` (already exists)
+- **Runtime Role:** `batch()` from `@synetics/synetics.dev` (already exists)
 - **Note:** Minimal transformation—just ensure parsing works
 - **Estimated Time:** 1 day
 
@@ -170,7 +170,7 @@ Debug System
 - **Priority:** 🟡 Medium
 - **Dependencies:** None
 - **Transformer Role:** Parse `untrack()` calls as normal function calls, auto-import
-- **Runtime Role:** `untrack()` from `@pulsar-framework/pulsar.dev` (already exists)
+- **Runtime Role:** `untrack()` from `@synetics/synetics.dev` (already exists)
 - **Note:** Minimal transformation—just ensure parsing works
 - **Estimated Time:** 1 day
 
@@ -179,7 +179,7 @@ Debug System
 - **Priority:** 🟢 Low
 - **Dependencies:** None
 - **Transformer Role:** Parse `defer()` calls as normal function calls, auto-import
-- **Runtime Role:** `defer()` from `@pulsar-framework/pulsar.dev` (if exists)
+- **Runtime Role:** `defer()` from `@synetics/synetics.dev` (if exists)
 - **Note:** Minimal transformation—just ensure parsing works
 - **Estimated Time:** 1 day
 
@@ -206,7 +206,7 @@ Debug System
 - **Priority:** 🟡 Medium
 - **Dependencies:** Client-Server Detection
 - **Transformer Role:** Emit SSR-compatible JavaScript, handle hydration
-- **Runtime Role:** SSR runtime in `@pulsar-framework/pulsar.dev` (if exists)
+- **Runtime Role:** SSR runtime in `@synetics/synetics.dev` (if exists)
 - **Note:** Ensure transformed code works in Node.js environment
 - **Estimated Time:** 4-5 days
 
@@ -522,7 +522,7 @@ For each feature implementation:
 - **portal-transformation** + 3 portal plans - `<Portal>` is runtime component
 - **create-context-providers** + 3 context plans - `createContext()`/`useContext()` are runtime functions
 
-**Why archived:** These are features already implemented in `@pulsar-framework/pulsar.dev`. The transformer's job is NOT to implement them—it's to parse PSR syntax and transform to JavaScript.
+**Why archived:** These are features already implemented in `@synetics/synetics.dev`. The transformer's job is NOT to implement them—it's to parse PSR syntax and transform to JavaScript.
 
 **See:** [PSR-TRANSFORMER-SCOPE.md](../PSR-TRANSFORMER-SCOPE.md) for clear boundary definition.
 
@@ -537,7 +537,7 @@ For each feature implementation:
 3. **Read** PSR-TRANSFORMER-SCOPE.md (understand transformer vs runtime boundary)
 4. **Implement** feature with debug tracking
 5. **Test** with unit/integration/e2e tests
-6. **Verify** against runtime (ensure transformed output works with `@pulsar-framework/pulsar.dev`)
+6. **Verify** against runtime (ensure transformed output works with `@synetics/synetics.dev`)
 7. **Document** changes
 8. **Run** supervisor validation
 9. **Commit** when supervisor passes

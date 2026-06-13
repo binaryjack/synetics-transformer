@@ -21,7 +21,7 @@ component Counter({ id }) {
     console.log('Processed code:', processedCode);
 
     // 2. Transform with TypeScript - using constructor
-    const tracker = new TransformationTracker('test.psr', psrCode);
+    const tracker = new TransformationTracker('test.syn', psrCode);
     const transformer = new PSRTransformer({ enableTracking: true });
 
     console.log('✅ Transformer created successfully!');

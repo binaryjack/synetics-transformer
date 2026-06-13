@@ -11,14 +11,14 @@ import { createPipeline } from '../index.js';
 describe('TypeScript Transformer', () => {
   it('should transform simple Counter component correctly', async () => {
     // Use the existing golden fixture
-    const fixturePath = join(process.cwd(), 'tests/fixtures/real-psr/01-counter.psr');
+    const fixturePath = join(process.cwd(), 'tests/fixtures/real-psr/01-counter.syn');
     const source = readFileSync(fixturePath, 'utf-8');
 
     console.log('\n=== INPUT PSR ===');
     console.log(source);
 
     // Transform using Babel pipeline
-    const pipeline = createPipeline({ filePath: 'counter.psr', debug: true });
+    const pipeline = createPipeline({ filePath: 'counter.syn', debug: true });
     const result = await pipeline.transform(source);
 
     console.log('\n=== OUTPUT JAVASCRIPT ===');
@@ -33,7 +33,7 @@ describe('TypeScript Transformer', () => {
 
     // Should contain framework imports
     expect(result.code).toContain('import {');
-    expect(result.code).toContain('@pulsar-framework/pulsar.dev');
+    expect(result.code).toContain('@synetics/synetics.dev');
 
     // Should contain $REGISTRY.execute
     expect(result.code).toContain('$REGISTRY.execute');
@@ -59,7 +59,7 @@ describe('TypeScript Transformer', () => {
 
   it('should transform JSX with style objects correctly', async () => {
     const source = `
-import { createSignal } from '@pulsar-framework/pulsar.dev';
+import { createSignal } from '@synetics/synetics.dev';
 
 export component StyleTest() {
   const [color, setColor] = createSignal('#3b82f6');
@@ -75,7 +75,7 @@ export component StyleTest() {
   );
 }`;
 
-    const pipeline = createPipeline({ filePath: 'style-test.psr', debug: false });
+    const pipeline = createPipeline({ filePath: 'style-test.syn', debug: false });
     const result = await pipeline.transform(source);
 
     console.log('\n=== STYLE OBJECT TEST ===');
@@ -94,7 +94,7 @@ export component StyleTest() {
 
   it('should handle ShowRegistry control flow component', async () => {
     const source = `
-import { createSignal, ShowRegistry } from '@pulsar-framework/pulsar.dev';
+import { createSignal, ShowRegistry } from '@synetics/synetics.dev';
 
 export component ConditionalTest() {
   const [show, setShow] = createSignal(true);
@@ -108,7 +108,7 @@ export component ConditionalTest() {
   );
 }`;
 
-    const pipeline = createPipeline({ filePath: 'conditional-test.psr', debug: false });
+    const pipeline = createPipeline({ filePath: 'conditional-test.syn', debug: false });
     const result = await pipeline.transform(source);
 
     console.log('\n=== SHOW COMPONENT TEST ===');

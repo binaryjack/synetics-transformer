@@ -16,7 +16,7 @@ export function createSignalTransform(t: typeof BabelTypes) {
         callee.name = 'createSignal';
 
         const program = path.findParent((p) => p.isProgram()) as NodePath<BabelTypes.Program>;
-        addImport(program, 'createSignal', '@pulsar-framework/pulsar.dev/reactivity', t);
+        addImport(program, 'createSignal', '@synetics/synetics.dev/reactivity', t);
       }
 
       // Transform signal() -> createSignal()
@@ -24,13 +24,13 @@ export function createSignalTransform(t: typeof BabelTypes) {
         callee.name = 'createSignal';
 
         const program = path.findParent((p) => p.isProgram()) as NodePath<BabelTypes.Program>;
-        addImport(program, 'createSignal', '@pulsar-framework/pulsar.dev/reactivity', t);
+        addImport(program, 'createSignal', '@synetics/synetics.dev/reactivity', t);
       }
 
       // Transform useState -> import from hooks
       if (t.isIdentifier(callee) && callee.name === 'useState') {
         const program = path.findParent((p) => p.isProgram()) as NodePath<BabelTypes.Program>;
-        addImport(program, 'useState', '@pulsar-framework/pulsar.dev/hooks', t);
+        addImport(program, 'useState', '@synetics/synetics.dev/hooks', t);
         return;
       }
 

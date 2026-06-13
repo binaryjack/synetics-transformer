@@ -7,7 +7,7 @@ Supervisor validation for complex JSX expressions transformation implementation 
 ## Mandatory AI Task Before Start
 
 - Read carefully and respect the following rules
-- Link to ai-collaboration-rules: `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\pulsar-transformer\docs\ai-collaboration-rules.json`
+- Link to ai-collaboration-rules: `C:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\synetics-transformer\docs\ai-collaboration-rules.json`
 
 ## Supervisor Responsibilities
 

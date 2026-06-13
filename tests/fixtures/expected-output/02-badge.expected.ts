@@ -1,10 +1,10 @@
 /**
- * Expected TypeScript output for 02-badge.psr
+ * Expected TypeScript output for 02-badge.syn
  * Tests: Function component (not "component" keyword), static JSX
  */
 
-import { cn } from '@pulsar-framework/design-tokens';
-import { $REGISTRY, t_element } from '@pulsar-framework/pulsar.dev';
+import { cn } from '@synetics/design-tokens';
+import { $REGISTRY, t_element } from '@synetics/synetics.dev';
 
 export interface IBadgeProps {
   label: string;

@@ -69,7 +69,7 @@ export async function transformPSR(
     }
     // Step 2: Create TypeScript source file from preprocessed source
     const sourceFile = ts.createSourceFile(
-      options.filePath || 'input.psr',
+      options.filePath || 'input.syn',
       preprocessedSource, // Use preprocessed source
       ts.ScriptTarget.ES2020,
       true, // setParentNodes
@@ -82,8 +82,8 @@ export async function transformPSR(
       enableTracking: options.debug ?? true,
       enableSourceMaps: options.enableSourceMaps ?? false,
       strictMode: options.strictMode ?? true,
-      registryImportPath: options.registryImportPath ?? '@pulsar-framework/pulsar.dev',
-      frameworkImportPath: options.frameworkImportPath ?? '@pulsar-framework/pulsar.dev',
+      registryImportPath: options.registryImportPath ?? '@synetics/synetics.dev',
+      frameworkImportPath: options.frameworkImportPath ?? '@synetics/synetics.dev',
     };
 
     const transformer = createPSRTransformer(transformerOptions);

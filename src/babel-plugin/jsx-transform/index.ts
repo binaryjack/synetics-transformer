@@ -1,7 +1,7 @@
 /**
  * JSX Transform - Public API
  *
- * Modular JSX transformation for Pulsar framework
+ * Modular JSX transformation for Synetics framework
  * Transforms JSX syntax into runtime calls
  */
 

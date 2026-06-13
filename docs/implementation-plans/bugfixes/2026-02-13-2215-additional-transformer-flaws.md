@@ -241,7 +241,7 @@
 
 ## 🔗 DEPENDENCY CHAIN
 
-**Critical Path for pulsar-ui.dev:**
+**Critical Path for synetics-ui.dev:**
 
 1. JSX member expressions (BUG 1) ← BLOCKING
 2. Type imports (BUG 4) ← BLOCKING

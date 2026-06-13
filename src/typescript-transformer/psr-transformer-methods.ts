@@ -435,7 +435,7 @@ export function transformContextProvider(
  * Transform useContext call
  * useContext(SomeContext) — no AST rewrite needed; the runtime signal read
  * inside useContext() handles reactivity. This method exists so the visitor
- * branch does not throw when it encounters useContext() in a .psr file.
+ * branch does not throw when it encounters useContext() in a .syn file.
  */
 export function transformUseContextCall(
   this: IPSRTransformer,

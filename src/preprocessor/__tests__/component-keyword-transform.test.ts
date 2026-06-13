@@ -185,7 +185,7 @@ describe('edge cases', () => {
 
   test('real-world example with mixed content', () => {
     const input = `
-import { createSignal } from '@pulsar-framework/pulsar.dev';
+import { createSignal } from '@synetics/synetics.dev';
 
 /**
  * Counter component with increment/decrement

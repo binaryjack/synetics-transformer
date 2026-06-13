@@ -7,11 +7,11 @@
 
 ## ⚠️ CRITICAL CLARIFICATION
 
-**`<Show>` is a RUNTIME COMPONENT from `@pulsar-framework/pulsar.dev`, NOT a transformer feature.**
+**`<Show>` is a RUNTIME COMPONENT from `@synetics/synetics.dev`, NOT a transformer feature.**
 
 The transformer does NOT implement `<Show>` logic. The runtime already provides it.
 
-**See:** `packages/pulsar.dev/src/control-flow/show-registry.ts`
+**See:** `packages/synetics.dev/src/control-flow/show-registry.ts`
 
 ---
 
@@ -21,7 +21,7 @@ The transformer does NOT implement `<Show>` logic. The runtime already provides 
 
 1. Parse `<Show when={...}>` as normal JSX
 2. Transform to `t_element('Show', { when: ... }, [children])`
-3. Auto-import `Show` from `@pulsar-framework/pulsar.dev` if used
+3. Auto-import `Show` from `@synetics/synetics.dev` if used
 4. Preserve reactive expressions in `when` prop
 5. **That's it.**
 
@@ -50,7 +50,7 @@ t_element('Show', { when: isLoggedIn() }, [t_element('Dashboard', null, [])]);
 **Auto-import:**
 
 ```js
-import { Show } from '@pulsar-framework/pulsar.dev';
+import { Show } from '@synetics/synetics.dev';
 ```
 
 ### 2. Preserve Reactive Expressions
@@ -225,7 +225,7 @@ component App() {
 
 **Expected:**
 
-- ✅ Auto-import: `import { Show } from '@pulsar-framework/pulsar.dev';`
+- ✅ Auto-import: `import { Show } from '@synetics/synetics.dev';`
 
 ### Test 4: Complex Expression Preservation
 
@@ -260,9 +260,9 @@ Before marking this plan complete:
 
 ## 📖 Related
 
-- Runtime implementation: `packages/pulsar.dev/src/control-flow/show-registry.ts`
-- Scope definition: `packages/pulsar-transformer/docs/PSR-TRANSFORMER-SCOPE.md`
-- JSX transformation: `packages/pulsar-transformer/src/transformer/prototypes/transform-jsx-element.ts`
+- Runtime implementation: `packages/synetics.dev/src/control-flow/show-registry.ts`
+- Scope definition: `packages/synetics-transformer/docs/PSR-TRANSFORMER-SCOPE.md`
+- JSX transformation: `packages/synetics-transformer/src/transformer/prototypes/transform-jsx-element.ts`
 
 ---
 

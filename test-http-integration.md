@@ -19,7 +19,7 @@
 2. **Run test:**
 
    ```bash
-   cd packages/pulsar-transformer
+   cd packages/synetics-transformer
 
    # Windows (PowerShell)
    $env:PULSAR_TRACE='1'
@@ -43,7 +43,7 @@
 1. **Start mock server:**
 
    ```bash
-   cd packages/pulsar-transformer
+   cd packages/synetics-transformer
    node test-http-server.js
    ```
 
@@ -52,7 +52,7 @@
 2. **In another terminal, run test:**
 
    ```bash
-   cd packages/pulsar-transformer
+   cd packages/synetics-transformer
 
    # Windows (PowerShell)
    $env:PULSAR_TRACE='1'

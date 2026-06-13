@@ -7,7 +7,8 @@ import type { ISemanticAnalyzer } from '../semantic-analyzer.js';
 
 export function analyzeComponentDeclaration(this: ISemanticAnalyzer, node: any): void {
   // Declare component symbol
-  this.declareSymbol(node.name.name, 'component', null, node);
+  const componentName = node.id ? node.id.name : (node.name ? node.name.name : '__anonymous__');
+  this.declareSymbol(componentName, 'component', null, node);
 
   // Enter component scope
   this.enterScope('component');

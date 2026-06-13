@@ -11,7 +11,7 @@
 
 **CRITICAL FINDING:** 22 out of 36 plans (61%) confuse **Runtime Framework Features** with **Transformer Features**.
 
-**What this means:** Over half the plans ask to "implement" or "transform" features that **ALREADY EXIST** in the Pulsar runtime (`@pulsar-framework/pulsar.dev`). The transformer's job is NOT to implement these features—the transformer merely needs to **parse and transform PSR syntax to JavaScript**, letting the runtime handle behavior.
+**What this means:** Over half the plans ask to "implement" or "transform" features that **ALREADY EXIST** in the Pulsar runtime (`@synetics/synetics.dev`). The transformer's job is NOT to implement these features—the transformer merely needs to **parse and transform PSR syntax to JavaScript**, letting the runtime handle behavior.
 
 ---
 
@@ -19,7 +19,7 @@
 
 ### What PSR Transformer Actually Does
 
-**Input:** `.psr` files (TypeScript + JSX + `component` keyword)  
+**Input:** `.syn` files (TypeScript + JSX + `component` keyword)  
 **Output:** `.js` files (standard JavaScript with runtime imports)
 
 **Actual Transformation Steps:**
@@ -28,7 +28,7 @@
 2. Transform `component MyComponent()` → `function MyComponent()` wrapped in `$REGISTRY.execute()`
 3. Transform JSX to runtime calls (`t_element()`, `t_text()`, etc.)
 4. Handle template literals with `${}` expressions
-5. Auto-import used primitives from `@pulsar-framework/pulsar.dev`
+5. Auto-import used primitives from `@synetics/synetics.dev`
 
 **That's it.** The transformer doesn't "implement" reactive primitives—they already exist in the runtime.
 
@@ -120,7 +120,7 @@ These plans confuse **runtime features** (already implemented) with **transforme
 
 **Plans that say: "Parse `<Component>` syntax and transform..."**
 
-**Reality:** `<Show>`, `<For>`, `<Portal>`, `<Dynamic>`, `<Suspense>` are **runtime components** from `@pulsar-framework/pulsar.dev`. They're just JSX components. The transformer doesn't need special handling—it just transforms them like any other JSX.
+**Reality:** `<Show>`, `<For>`, `<Portal>`, `<Dynamic>`, `<Suspense>` are **runtime components** from `@synetics/synetics.dev`. They're just JSX components. The transformer doesn't need special handling—it just transforms them like any other JSX.
 
 **INVALID Plans:**
 
@@ -158,7 +158,7 @@ These plans confuse **runtime features** (already implemented) with **transforme
 
 **Plans that say: "Implement `functionName()` transformation..."**
 
-**Reality:** `createResource()`, `createSignal()`, `lazy()`, `createContext()`, `useContext()` are **runtime functions** from `@pulsar-framework/pulsar.dev`. The transformer doesn't "implement" them—it just parses them as normal function calls and auto-imports them.
+**Reality:** `createResource()`, `createSignal()`, `lazy()`, `createContext()`, `useContext()` are **runtime functions** from `@synetics/synetics.dev`. The transformer doesn't "implement" them—it just parses them as normal function calls and auto-imports them.
 
 **INVALID Plans:**
 
@@ -346,7 +346,7 @@ component GenericList<T extends Item>(props: { items: T[] }) {
 const [count, setCount] = createSignal(0);
 ```
 
-**Transformation:** Auto-inject import for `createSignal` from `@pulsar-framework/pulsar.dev`
+**Transformation:** Auto-inject import for `createSignal` from `@synetics/synetics.dev`
 **Status:** ✅ Already implemented
 
 ---
@@ -382,7 +382,7 @@ const [count, setCount] = createSignal(0);
    - Create clear boundary: "Runtime features are out of scope"
 
 3. **Validate Test Files:**
-   - Check test PSR files in `packages/pulsar-ui.dev/src/lab/transformer/`
+   - Check test PSR files in `packages/synetics-ui.dev/src/lab/transformer/`
    - These files use `<Show>`, `<Portal>`, `createResource()` as **runtime imports**
    - No special PSR syntax beyond `component` keyword
 
@@ -436,7 +436,7 @@ const [count, setCount] = createSignal(0);
 **Correct Approach:**
 
 - **Transformer:** Parse PSR syntax → Transform to JavaScript → Done
-- **Runtime:** Provide reactive primitives (`@pulsar-framework/pulsar.dev`) → Already exists
+- **Runtime:** Provide reactive primitives (`@synetics/synetics.dev`) → Already exists
 - **No overlap:** Transformer doesn't implement runtime features
 
 **Recommendations:**

@@ -11,19 +11,19 @@ import { createParser } from '../../parser/index.js';
 import { createTransformer } from '../../transformer/index.js';
 
 describe('Golden Fixture - Counter', () => {
-  it('should transform Counter.psr through full pipeline', () => {
+  it('should transform Counter.syn through full pipeline', () => {
     // Read the golden fixture
-    const fixturePath = join(process.cwd(), 'tests/fixtures/real-psr/01-counter.psr');
+    const fixturePath = join(process.cwd(), 'tests/fixtures/real-psr/01-counter.syn');
     const source = readFileSync(fixturePath, 'utf-8');
 
     // Run full pipeline: Lexer → Parser → Transformer → CodeGenerator
-    const lexer = createLexer(source, 'counter.psr');
+    const lexer = createLexer(source, 'counter.syn');
     const tokens = lexer.scanTokens();
 
-    const parser = createParser(tokens, 'counter.psr');
+    const parser = createParser(tokens, 'counter.syn');
     const ast = parser.parse();
 
-    const transformer = createTransformer(ast, { sourceFile: 'counter.psr' });
+    const transformer = createTransformer(ast, { sourceFile: 'counter.syn' });
     const transformResult = transformer.transform();
 
     // /Debug: log the transformed AST

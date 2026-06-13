@@ -1,6 +1,6 @@
 /**
  * Import Transformation for Pulsar
- * Handles mapping .psr file extensions to their compiled output format (.js)
+ * Handles mapping .syn file extensions to their compiled output format (.js)
  */
 
 import type { NodePath } from '@babel/traverse';
@@ -11,10 +11,10 @@ export function createImportTransform(t: typeof BabelTypes) {
     ImportDeclaration(path: NodePath<BabelTypes.ImportDeclaration>) {
       const source = path.node.source.value;
 
-      // Check if the import path ends with .psr
-      if (source.endsWith('.psr')) {
-        // Replace .psr with .js for native ESM and bundler support
-        const newSource = source.replace(/\.psr$/, '.js');
+      // Check if the import path ends with .syn
+      if (source.endsWith('.syn')) {
+        // Replace .syn with .js for native ESM and bundler support
+        const newSource = source.replace(/\.syn$/, '.js');
         path.node.source = t.stringLiteral(newSource);
       }
     },

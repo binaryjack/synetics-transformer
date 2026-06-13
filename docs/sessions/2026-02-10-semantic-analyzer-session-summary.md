@@ -97,9 +97,9 @@ semantic-analyzer/
 ### API Integration
 
 ```typescript
-import { SemanticAnalyzer } from '@pulsar-framework/transformer';
+import { SemanticAnalyzer } from '@synetics/transformer';
 
-const analyzer = new SemanticAnalyzer(ast, 'file.psr');
+const analyzer = new SemanticAnalyzer(ast, 'file.syn');
 const result = analyzer.analyze();
 // Returns: { symbolTable, errors, warnings }
 ```
@@ -226,8 +226,8 @@ Transform PSR AST nodes → TypeScript AST nodes
 2. **Add Framework Imports**
 
    ```typescript
-   import { createSignal, useEffect } from '@pulsar-framework/pulsar.dev';
-   import { t_element, $REGISTRY } from '@pulsar-framework/pulsar.dev';
+   import { createSignal, useEffect } from '@synetics/synetics.dev';
+   import { t_element, $REGISTRY } from '@synetics/synetics.dev';
    ```
 
 3. **Wrap Component Body in $REGISTRY.execute**
@@ -266,9 +266,9 @@ Transform PSR AST nodes → TypeScript AST nodes
 
 Use existing golden fixtures:
 
-- Counter.psr
-- Badge.psr
-- Drawer.psr
+- Counter.syn
+- Badge.syn
+- Drawer.syn
 
 Compare transformed output against expected TypeScript.
 

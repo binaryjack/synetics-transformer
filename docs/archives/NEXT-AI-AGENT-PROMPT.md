@@ -14,7 +14,7 @@
 
 - 15 prototype methods created
 - 6/6 tests passing
-- Counter.psr golden fixture working
+- Counter.syn golden fixture working
 - Zero rule violations
 - Clean architecture using Visitor + Strategy patterns
 
@@ -90,7 +90,7 @@ export interface IPipelineOptions {
 
 ## 🔥 PRIORITY 2: Golden Fixture Tests
 
-### Task: Test Badge.psr and Drawer.psr
+### Task: Test Badge.syn and Drawer.syn
 
 **Create these files:**
 
@@ -101,8 +101,8 @@ export interface IPipelineOptions {
 
 **Fixtures location:**
 
-- `tests/fixtures/real-psr/02-badge.psr`
-- `tests/fixtures/real-psr/03-drawer.psr`
+- `tests/fixtures/real-psr/02-badge.syn`
+- `tests/fixtures/real-psr/03-drawer.syn`
 
 **Expected result:** 3/3 golden fixtures passing
 
@@ -203,8 +203,8 @@ case 'ExportNamedDeclaration':
 Before claiming done, verify:
 
 - [ ] Transformer integrated into pipeline (feature flag)
-- [ ] Badge.psr transforms correctly
-- [ ] Drawer.psr transforms correctly
+- [ ] Badge.syn transforms correctly
+- [ ] Drawer.syn transforms correctly
 - [ ] Semantic analyzer compiles without errors
 - [ ] Full test suite passes (no regressions)
 - [ ] Pipeline option documented
@@ -298,8 +298,8 @@ From `docs/ai-collaboration-rules.json`:
 | Task                       | Time          |
 | -------------------------- | ------------- |
 | Integration (feature flag) | 30 mins       |
-| Badge.psr test             | 15 mins       |
-| Drawer.psr test            | 15 mins       |
+| Badge.syn test             | 15 mins       |
+| Drawer.syn test            | 15 mins       |
 | Fix semantic analyzer      | 5 mins        |
 | CodeGenerator update       | 30 mins       |
 | Full test suite run        | 10 mins       |
@@ -321,7 +321,7 @@ From `docs/ai-collaboration-rules.json`:
 
 1. Semantic analyzer has type error (Priority 3)
 2. CodeGenerator doesn't recognize transformed AST yet (Priority 4)
-3. Only Counter.psr tested so far (Priority 2)
+3. Only Counter.syn tested so far (Priority 2)
 
 ---
 
@@ -447,7 +447,7 @@ pnpm tsc --noEmit
 3. State your plan for Priority 1 (Integration)
 4. Wait for approval
 5. Implement feature flag
-6. Test with Counter.psr
+6. Test with Counter.syn
 7. Report results
 
 **Don't proceed to Priority 2 until Priority 1 works.**

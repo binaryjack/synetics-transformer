@@ -104,7 +104,7 @@ For each remaining plan:
 
 ```powershell
 # Update all remaining plans with framework analysis
-$basePath = "c:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\pulsar-transformer\docs\implementation-plans"
+$basePath = "c:\Users\Piana Tadeo\source\repos\visual-schema-builder\packages\synetics-transformer\docs\implementation-plans"
 
 # Mapping of plans to framework analysis sections
 $updates = @{

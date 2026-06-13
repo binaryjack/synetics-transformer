@@ -175,7 +175,7 @@ export const Counter = (): HTMLElement => {
 
 **Goal:** Implement reactivity system (signals, effects, dependencies)
 
-**Location:** `packages/pulsar.dev/` (separate package)
+**Location:** `packages/synetics.dev/` (separate package)
 
 **What To Implement:**
 
@@ -240,7 +240,7 @@ export function t_element(tag: string, props: Record<string, any>, children: any
 
 ### NEXT WEEK:
 
-1. Runtime reactivity system (pulsar.dev package)
+1. Runtime reactivity system (synetics.dev package)
 2. Vite plugin integration
 3. End-to-end testing
 
@@ -250,18 +250,18 @@ export function t_element(tag: string, props: Record<string, any>, children: any
 
 **Read First:**
 
-- `packages/pulsar-transformer/docs/learnings/2026-02-10-typescript-type-system-implementation.md` (this session's learnings)
-- `packages/pulsar-transformer/tests/fixtures/real-psr/*.psr` (golden test files)
-- `packages/pulsar-transformer/tests/fixtures/expected-output/*.expected.ts` (expected outputs)
+- `packages/synetics-transformer/docs/learnings/2026-02-10-typescript-type-system-implementation.md` (this session's learnings)
+- `packages/synetics-transformer/tests/fixtures/real-psr/*.syn` (golden test files)
+- `packages/synetics-transformer/tests/fixtures/expected-output/*.expected.ts` (expected outputs)
 
 **Reference:**
 
-- `packages/pulsar-transformer/src/parser/` (completed parser examples)
-- `packages/pulsar-transformer/src/code-generator/` (completed code gen examples)
+- `packages/synetics-transformer/src/parser/` (completed parser examples)
+- `packages/synetics-transformer/src/code-generator/` (completed code gen examples)
 
 **Test Framework:**
 
-- `packages/pulsar-transformer/tests/integration/full-pipeline.test.ts` (integration test pattern)
+- `packages/synetics-transformer/tests/integration/full-pipeline.test.ts` (integration test pattern)
 
 ---
 
@@ -350,7 +350,7 @@ feature-name/
 
 ```bash
 # Start implementation
-cd packages/pulsar-transformer
+cd packages/synetics-transformer
 
 # Create semantic analyzer structure
 mkdir -p src/semantic-analyzer/prototypes

@@ -124,6 +124,32 @@ function adaptExpression(node: BabelTypes.Expression | null | undefined): IExpre
       } as IJSXElement;
     }
 
+    case 'ArrayExpression': {
+      return {
+        type: 'ArrayExpression',
+        elements: node.elements.map(e => e ? adaptExpression(e as BabelTypes.Expression) : null),
+        loc: loc(node)
+      } as any;
+    }
+
+    case 'ObjectExpression': {
+      return {
+        type: 'ObjectExpression',
+        properties: node.properties.map((p: any) => {
+          if (p.type === 'ObjectProperty') {
+            return {
+              type: 'ObjectProperty',
+              key: adaptExpression(p.key),
+              value: adaptExpression(p.value),
+              loc: loc(p)
+            };
+          }
+          return passthrough(p);
+        }),
+        loc: loc(node)
+      } as any;
+    }
+
     default:
       return passthrough(node) as unknown as IExpression;
   }
@@ -210,12 +236,49 @@ function adaptStatement(node: BabelTypes.Statement): IStatementNode {
           id:
             d.id.type === 'Identifier'
               ? ({ type: 'Identifier', name: d.id.name, loc: loc(d.id) } as IIdentifier)
+              : d.id.type === 'ArrayPattern'
+              ? ({
+                  type: 'ArrayPattern',
+                  elements: (d.id as any).elements.map((e: any) =>
+                    e && e.type === 'Identifier'
+                      ? { type: 'Identifier', name: e.name, loc: loc(e) }
+                      : e ? passthrough(e) : null
+                  ),
+                  loc: loc(d.id),
+                } as any)
+              : d.id.type === 'ObjectPattern'
+              ? ({
+                  type: 'ObjectPattern',
+                  properties: (d.id as any).properties.map((p: any) =>
+                    p.type === 'ObjectProperty' && p.value.type === 'Identifier'
+                      ? {
+                          type: 'ObjectProperty',
+                          value: { type: 'Identifier', name: p.value.name, loc: loc(p.value) },
+                          loc: loc(p),
+                        }
+                      : passthrough(p)
+                  ),
+                  loc: loc(d.id),
+                } as any)
               : passthrough(d.id as BabelTypes.Node),
           init: d.init ? adaptExpression(d.init) : null,
           loc: loc(d),
         })),
         loc: loc(node),
       } as IVariableDeclaration;
+    }
+
+    case 'ImportDeclaration': {
+      return {
+        type: 'ImportDeclaration',
+        specifiers: node.specifiers.map((s: any) => ({
+          type: s.type,
+          local: { type: 'Identifier', name: s.local.name, loc: loc(s.local) },
+          loc: loc(s)
+        })),
+        source: { type: 'StringLiteral', value: node.source.value, loc: loc(node.source) },
+        loc: loc(node),
+      } as any;
     }
 
     default:

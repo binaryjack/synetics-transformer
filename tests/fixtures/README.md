@@ -6,13 +6,13 @@
 
 ```
 fixtures/
-  real-psr/           ← Input PSR files (from pulsar-ui.dev)
+  real-psr/           ← Input PSR files (from synetics-ui.dev)
   expected-output/    ← Manually written expected TypeScript output
 ```
 
 ## Golden Test Cases
 
-### 01-counter.psr
+### 01-counter.syn
 
 **Tests:**
 
@@ -32,7 +32,7 @@ fixtures/
 
 ---
 
-### 02-badge.psr
+### 02-badge.syn
 
 **Tests:**
 
@@ -52,7 +52,7 @@ fixtures/
 
 ---
 
-### 03-drawer.psr
+### 03-drawer.syn
 
 **Tests:**
 
