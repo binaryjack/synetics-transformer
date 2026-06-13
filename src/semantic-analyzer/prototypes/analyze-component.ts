@@ -21,10 +21,28 @@ export function analyzeComponentDeclaration(this: ISemanticAnalyzer, node: any):
     } else if (param.type === 'ObjectPattern') {
       // Destructured params
       for (const prop of param.properties) {
-        const propType = prop.value.typeAnnotation
-          ? this.inferType(prop.value.typeAnnotation)
-          : null;
-        this.declareSymbol(prop.value.name, 'parameter', propType, prop.value);
+        if (prop.type === 'RestElement') {
+          const name = prop.argument.name;
+          const propType = prop.typeAnnotation ? this.inferType(prop.typeAnnotation) : null;
+          this.declareSymbol(name, 'parameter', propType, prop);
+        } else if (prop.type === 'ObjectProperty') {
+          let name;
+          let typeNode;
+          let nodeToDeclare = prop.value;
+
+          if (prop.value.type === 'AssignmentPattern') {
+            name = prop.value.left.name;
+            typeNode = prop.value.left;
+          } else if (prop.value.type === 'Identifier') {
+            name = prop.value.name;
+            typeNode = prop.value;
+          }
+
+          if (name) {
+            const propType = typeNode.typeAnnotation ? this.inferType(typeNode.typeAnnotation) : null;
+            this.declareSymbol(name, 'parameter', propType, nodeToDeclare);
+          }
+        }
       }
     }
   }

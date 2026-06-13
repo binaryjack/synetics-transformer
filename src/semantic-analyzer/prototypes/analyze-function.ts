@@ -42,8 +42,11 @@ export function analyzeFunctionDeclaration(this: ISemanticAnalyzer, node: any): 
             }
 
             if (name) {
+              console.log(`[SemanticAnalyzer] Declaring param object property: ${name}`);
               const propType = typeNode.typeAnnotation ? this.inferType(typeNode.typeAnnotation) : null;
               this.declareSymbol(name, 'parameter', propType, nodeToDeclare);
+            } else {
+              console.log(`[SemanticAnalyzer] Failed to extract name for ObjectProperty:`, prop.value.type);
             }
           }
         }

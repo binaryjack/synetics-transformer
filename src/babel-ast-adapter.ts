@@ -182,9 +182,38 @@ function adaptStatement(node: BabelTypes.Statement): IStatementNode {
         name: node.id?.name ?? '__anonymous__',
         loc: node.id ? loc(node.id) : undefined,
       };
-      const params: IIdentifier[] = node.params
-        .filter((p): p is BabelTypes.Identifier => p.type === 'Identifier')
-        .map((p) => ({ type: 'Identifier', name: p.name, loc: loc(p) }));
+      const params: any[] = node.params.map((p) => {
+        if (p.type === 'Identifier') {
+          return { type: 'Identifier', name: p.name, loc: loc(p) };
+        } else if (p.type === 'ObjectPattern') {
+          return {
+            type: 'ObjectPattern',
+            properties: p.properties.map((prop: any) => {
+              if (prop.type === 'RestElement') {
+                return {
+                  type: 'RestElement',
+                  argument: { type: 'Identifier', name: prop.argument.name, loc: loc(prop.argument) },
+                  loc: loc(prop)
+                };
+              }
+              if (prop.type === 'ObjectProperty') {
+                return {
+                  type: 'ObjectProperty',
+                  key: adaptExpression(prop.key),
+                  value: prop.value.type === 'AssignmentPattern' 
+                    ? { type: 'AssignmentPattern', left: adaptExpression(prop.value.left), right: adaptExpression(prop.value.right) }
+                    : adaptExpression(prop.value),
+                  loc: loc(prop)
+                };
+              }
+              return passthrough(prop);
+            }),
+            loc: loc(p),
+          };
+        } else {
+          return passthrough(p);
+        }
+      });
 
       const isPascalCase = /^[A-Z]/.test(id.name);
 

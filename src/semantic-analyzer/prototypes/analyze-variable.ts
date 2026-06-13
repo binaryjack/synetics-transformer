@@ -28,10 +28,18 @@ export function analyzeVariableDeclaration(this: ISemanticAnalyzer, node: any): 
         }
       }
     } else if (declarator.id.type === 'ObjectPattern') {
-      // Object destructuring: const { x, y } = props
+      // Object destructuring: const { x, y, ...rest } = props
       for (const prop of declarator.id.properties) {
-        if (prop.value.type === 'Identifier') {
-          this.declareSymbol(prop.value.name, 'variable', null, prop.value);
+        if (prop.type === 'RestElement') {
+          if (prop.argument && prop.argument.type === 'Identifier') {
+            this.declareSymbol(prop.argument.name, 'variable', null, prop.argument);
+          }
+        } else if (prop.type === 'ObjectProperty') {
+          if (prop.value.type === 'Identifier') {
+            this.declareSymbol(prop.value.name, 'variable', null, prop.value);
+          } else if (prop.value.type === 'AssignmentPattern' && prop.value.left.type === 'Identifier') {
+            this.declareSymbol(prop.value.left.name, 'variable', null, prop.value.left);
+          }
         }
       }
     }
