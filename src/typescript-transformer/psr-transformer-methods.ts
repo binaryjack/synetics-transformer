@@ -6,9 +6,10 @@
 import * as ts from 'typescript';
 import type { IPSRTransformer } from './psr-transformer.types.js';
 import { TransformationPhaseEnum } from './transformation-tracker.types.js';
+import { analyzeStaticJSX } from './static-analyzer.js';
 
 /**
- * Transform JSX self-closing element
+ * Transform JSX self-closing element with SOTA Static Template Hoisting
  */
 export function transformJSXSelfClosingElement(
   this: IPSRTransformer,
@@ -16,6 +17,30 @@ export function transformJSXSelfClosingElement(
 ): ts.CallExpression {
   const tagName = this.getJSXTagName(node);
   const stepId = `jsx-self-${tagName}-${++this.transformationCount!}`;
+
+  // SOTA Optimization: Check if static
+  const staticAnalysis = analyzeStaticJSX(node);
+  if (staticAnalysis.isStatic && staticAnalysis.html) {
+    if (this.tracker) {
+      this.tracker.startStep(
+        stepId,
+        `Transform static self-closing JSX with template clone: ${tagName}`,
+        TransformationPhaseEnum.JSX_TRANSFORM,
+        'JsxSelfClosingElement (Static Template)'
+      );
+    }
+
+    const templateCall = this.createTemplateCall(staticAnalysis.html);
+
+    if (this.tracker) {
+      this.tracker.completeStep(stepId, 'CallExpression (template clone self-closing)', {
+        tagName,
+        hoisted: true,
+      });
+    }
+
+    return templateCall;
+  }
 
   if (this.tracker) {
     this.tracker.startStep(
@@ -622,6 +647,19 @@ export function createTElementCall(
     ts.factory.createStringLiteral(tagName),
     attributes,
     children,
+  ]);
+}
+
+/**
+ * Create template() clone call for hoisted static DOM trees
+ */
+export function createTemplateCall(
+  this: IPSRTransformer,
+  html: string
+): ts.CallExpression {
+  this.addFrameworkImport('template');
+  return ts.factory.createCallExpression(ts.factory.createIdentifier('template'), undefined, [
+    ts.factory.createStringLiteral(html),
   ]);
 }
 

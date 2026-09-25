@@ -11,6 +11,7 @@ import type {
 } from './psr-transformer.types.js';
 import { createTransformationTracker } from './transformation-tracker.js';
 import { TransformationPhaseEnum } from './transformation-tracker.types.js';
+import { analyzeStaticJSX } from './static-analyzer.js';
 
 /**
  * PSRTransformer constructor (prototype-based)
@@ -268,11 +269,35 @@ function transformComponentDeclaration(
 }
 
 /**
- * Transform JSX element to t_element call
+ * Transform JSX element with SOTA Static Template Hoisting
  */
 function transformJSXElement(this: IPSRTransformer, node: ts.JsxElement): ts.CallExpression {
   const tagName = this.getJSXTagName(node);
   const stepId = `jsx-${tagName}-${++this.transformationCount!}`;
+
+  // SOTA Optimization: Check if this entire JSX subtree is 100% static HTML
+  const staticAnalysis = analyzeStaticJSX(node);
+  if (staticAnalysis.isStatic && staticAnalysis.html) {
+    if (this.tracker) {
+      this.tracker.startStep(
+        stepId,
+        `Transform static JSX with template clone: ${tagName}`,
+        TransformationPhaseEnum.JSX_TRANSFORM,
+        'JsxElement (Static Template)'
+      );
+    }
+
+    const templateCall = this.createTemplateCall(staticAnalysis.html);
+
+    if (this.tracker) {
+      this.tracker.completeStep(stepId, 'CallExpression (template clone)', {
+        tagName,
+        hoisted: true,
+      });
+    }
+
+    return templateCall;
+  }
 
   if (this.tracker) {
     this.tracker.startStep(
@@ -329,6 +354,7 @@ import {
   addFrameworkImport,
   createRegistryExecuteCall,
   createTElementCall,
+  createTemplateCall,
   getJSXAttributeValue,
   injectImports,
   transformContextProvider,
@@ -369,6 +395,7 @@ Object.assign(PSRTransformer.prototype, {
   transformJSXChildren,
   createRegistryExecuteCall,
   createTElementCall,
+  createTemplateCall,
   getJSXAttributeValue,
   addFrameworkImport,
   injectImports,

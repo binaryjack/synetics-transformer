@@ -105,6 +105,7 @@ export interface IPSRTransformer {
     attributes: ts.Expression,
     children: ts.Expression
   ): ts.CallExpression;
+  createTemplateCall(html: string): ts.CallExpression;
   getJSXAttributeValue(
     element: ts.JsxElement | ts.JsxSelfClosingElement,
     attributeName: string
