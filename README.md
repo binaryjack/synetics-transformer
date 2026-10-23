@@ -477,7 +477,6 @@ export function SafeDemo(): HTMLElement {
 ## Documentation
 
 - **[VERIFICATION REPORT](./VERIFICATION-REPORT-2026-02-07.md)** - ⭐ Independent verification of all claims
-- **[Session Archive](../../docs/pulsar/transformer/sessions/2026-02-07/)** - Complete development history
 - **[Architecture Overview](./docs/architecture.md)** - Complete pipeline documentation
 - **[API Reference](./docs/api-reference.md)** - Full API documentation
 - **[Usage Examples](./docs/examples.md)** - Practical code examples
@@ -498,6 +497,28 @@ All claims in this README have been independently verified on February 7, 2026.
 - Build system verification
 
 **Confidence Level:** HIGH - Based on direct test output observation
+
+### Programmatic API
+
+```typescript
+import syneticsTransformer from '@synetics/transformer';
+import * as ts from 'typescript';
+
+const program = ts.createProgram(['src/app.tsx'], compilerOptions);
+const transformers = {
+  before: [syneticsTransformer(program)],
+};
+
+program.emit(sourceFile, writeFile, undefined, false, transformers);
+```
+
+## Debug Mode
+
+Enable comprehensive debugging:
+
+```bash
+SYNETICS_DEBUG=true pnpm build
+```
 
 ---
 
@@ -698,12 +719,12 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines.
 ### Programmatic API
 
 ```typescript
-import pulsarTransformer from '@synetics/transformer';
+import syneticsTransformer from '@synetics/transformer';
 import * as ts from 'typescript';
 
 const program = ts.createProgram(['src/app.tsx'], compilerOptions);
 const transformers = {
-  before: [pulsarTransformer(program)],
+  before: [syneticsTransformer(program)],
 };
 
 program.emit(sourceFile, writeFile, undefined, false, transformers);
@@ -714,7 +735,7 @@ program.emit(sourceFile, writeFile, undefined, false, transformers);
 Enable comprehensive debugging:
 
 ```bash
-PULSAR_DEBUG=true pnpm build
+SYNETICS_DEBUG=true pnpm build
 ```
 
 Debug channels:
